@@ -33,11 +33,9 @@ body {
   color: #1a1a1a;
 }
 
-.doc-content h1 { font-size: 2rem; font-weight: 700; margin: 2rem 0 1rem; }
-.doc-content h2 { font-size: 1.5rem; font-weight: 600; margin: 1.8rem 0 0.8rem; }
-.doc-content h3 { font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 0.6rem; }
-.doc-content p  { margin: 0 0 1rem; }
+.doc-content h2 { font-size: 1.1rem; font-weight: 600; margin: 1.6rem 0 0.6rem; }
+.doc-content h3 { font-size: 1rem; font-weight: 600; margin: 1.2rem 0 0.4rem; }
+.doc-content p  { font-size: 0.9rem; margin: 0 0 0.85rem; color: #333; }
 .doc-content a  { color: #2563eb; text-decoration: underline; }
-
-/* 구글 독스가 삽입하는 인라인 스타일 초기화 */
 .doc-content * { max-width: 100%; }
+
