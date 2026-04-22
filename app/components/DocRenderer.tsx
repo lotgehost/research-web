@@ -92,7 +92,7 @@ export default function DocRenderer() {
   }
 
   return (
-    <div className="min-h-screen bg-white flex" style={{ fontFamily: "Georgia, serif" }}>
+    <div className="min-h-screen bg-white flex" style={{ fontFamily: "Georgia, serif", padding: "0 10%" }}>
 
       {/* Google Docs 스코핑된 CSS + 레이아웃 오버라이드 */}
       <style dangerouslySetInnerHTML={{ __html: `
@@ -155,8 +155,8 @@ export default function DocRenderer() {
         )}
       </aside>
 
-      {/* 가운데 여백 — 8% */}
-      <div style={{ width: "8%" }} />
+      {/* 가운데 여백 — 5% */}
+      <div style={{ width: "5%" }} />
 
       {/* 오른쪽 본문 — 70% */}
       <main className="pt-16 pb-24 pr-16" style={{ width: "70%" }}>
