@@ -25,17 +25,4 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* 구글 독스 HTML 스타일 정규화 */
-.doc-content {
-  font-family: Georgia, serif;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #1a1a1a;
-}
-
-.doc-content h2 { font-size: 1.1rem; font-weight: 600; margin: 1.6rem 0 0.6rem; }
-.doc-content h3 { font-size: 1rem; font-weight: 600; margin: 1.2rem 0 0.4rem; }
-.doc-content p  { font-size: 0.9rem; margin: 0 0 0.85rem; color: #333; }
-.doc-content a  { color: #2563eb; text-decoration: underline; }
-.doc-content * { max-width: 100%; }
 
