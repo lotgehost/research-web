@@ -128,17 +128,14 @@ export default function DocRenderer() {
               <a
                 key={item.label}
                 href={matched ? `#${matched.id}` : undefined}
-                className="group flex items-start gap-2.5 py-1 transition-colors text-sm font-sans"
-                style={{ color: isActive ? "#111" : "#aaa", textDecoration: "none" }}
+                className="block py-1 transition-colors font-sans leading-snug"
+                style={{
+                  color: isActive ? "#888" : "#ccc",
+                  textDecoration: "none",
+                  fontSize: "11px",
+                }}
               >
-                <span
-                  className="mt-2 block h-px shrink-0 transition-all duration-200"
-                  style={{
-                    width: isActive ? 20 : 12,
-                    background: isActive ? "#111" : "#ccc",
-                  }}
-                />
-                <span className="leading-snug">{item.label}</span>
+                {item.label}
               </a>
             );
           })}
@@ -151,11 +148,11 @@ export default function DocRenderer() {
         )}
       </aside>
 
-      {/* 가운데 여백 — 4% */}
-      <div style={{ width: "4%" }} />
+      {/* 가운데 여백 — 8% */}
+      <div style={{ width: "8%" }} />
 
-      {/* 오른쪽 본문 — 74% */}
-      <main className="pt-16 pb-24 pr-16" style={{ width: "74%" }}>
+      {/* 오른쪽 본문 — 70% */}
+      <main className="pt-16 pb-24 pr-16" style={{ width: "70%" }}>
         <div
           id="gdoc"
           dangerouslySetInnerHTML={{ __html: data?.body ?? "" }}
