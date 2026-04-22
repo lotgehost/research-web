@@ -130,9 +130,9 @@ export default function DocRenderer() {
                 href={matched ? `#${matched.id}` : undefined}
                 className="block py-1 transition-colors font-sans leading-snug"
                 style={{
-                  color: isActive ? "#888" : "#ccc",
+                  color: isActive ? "#111" : "#111",
                   textDecoration: "none",
-                  fontSize: "11px",
+                  fontSize: "14px",
                 }}
               >
                 {item.label}
@@ -142,7 +142,7 @@ export default function DocRenderer() {
         </nav>
 
         {lastSync && (
-          <p className="mt-auto pt-8 text-[10px] text-gray-300 font-sans">
+          <p className="mt-auto pt-8 font-sans" style={{ fontSize: "10px", color: "#ccc" }}>
             Updated {lastSync.toLocaleTimeString("ko-KR")}
           </p>
         )}
