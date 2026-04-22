@@ -15,12 +15,12 @@ type DocsResponse = {
 const POLL_INTERVAL = 30_000;
 
 const TOC_ITEMS = [
-  { label: "Intro", match: "Intro" },
-  { label: "Part 1. The Landscape: 우리는 지금 어디에 서 있는가", match: "Part 1" },
-  { label: "Part 2. Our Northstar: 우리가 함께 바라볼 변화, 시스템 체인지", match: "Part 2" },
-  { label: "Part 3. I-Theory: 나로부터 시작되는 변화", match: "Part 3" },
-  { label: "Part 4. Beyond I: 미션이 이끄는 창발적 협력", match: "Part 4" },
-  { label: "Outro", match: "Outro" },
+  { title: "Intro", sub: "", match: "Intro" },
+  { title: "Part 1. The Landscape", sub: ": 우리는 지금 어디에 서 있는가", match: "Part 1" },
+  { title: "Part 2. Our Northstar", sub: ": 우리가 함께 바라볼 변화, 시스템 체인지", match: "Part 2" },
+  { title: "Part 3. I-Theory", sub: ": 나로부터 시작되는 변화", match: "Part 3" },
+  { title: "Part 4. Beyond I", sub: ": 미션이 이끄는 창발적 협력", match: "Part 4" },
+  { title: "Outro", sub: "", match: "Outro" },
 ];
 
 export default function DocRenderer() {
@@ -126,16 +126,23 @@ export default function DocRenderer() {
             const isActive = matched ? activeId === matched.id : false;
             return (
               <a
-                key={item.label}
+                key={item.title}
                 href={matched ? `#${matched.id}` : undefined}
-                className="block py-1 transition-colors font-sans leading-snug"
+                className="block transition-colors font-sans"
                 style={{
-                  color: isActive ? "#111" : "#111",
+                  color: "#111",
                   textDecoration: "none",
                   fontSize: "14px",
+                  marginBottom: "20px",
+                  opacity: isActive ? 1 : 0.85,
                 }}
               >
-                {item.label}
+                <span className="block leading-snug">{item.title}</span>
+                {item.sub && (
+                  <span className="block leading-snug" style={{ color: "#888" }}>
+                    {item.sub}
+                  </span>
+                )}
               </a>
             );
           })}
