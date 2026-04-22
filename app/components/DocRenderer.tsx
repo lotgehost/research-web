@@ -14,6 +14,15 @@ type DocsResponse = {
 
 const POLL_INTERVAL = 30_000;
 
+const TOC_ITEMS = [
+  { label: "Intro", match: "Intro" },
+  { label: "Part 1. The Landscape: 우리는 지금 어디에 서 있는가", match: "Part 1" },
+  { label: "Part 2. Our Northstar: 우리가 함께 바라볼 변화, 시스템 체인지", match: "Part 2" },
+  { label: "Part 3. I-Theory: 나로부터 시작되는 변화", match: "Part 3" },
+  { label: "Part 4. Beyond I: 미션이 이끄는 창발적 협력", match: "Part 4" },
+  { label: "Outro", match: "Outro" },
+];
+
 export default function DocRenderer() {
   const [data, setData] = useState<DocsResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -104,30 +113,35 @@ export default function DocRenderer() {
         #gdoc p > span:only-child:empty + p { display: none !important; }
       `}} />
 
-      {/* 왼쪽 TOC — 30% */}
+      {/* 왼쪽 TOC — 22% */}
       <aside
-        className="sticky top-0 h-screen overflow-y-auto shrink-0 pt-16 pl-10 pr-6"
-        style={{ width: "30%" }}
+        className="sticky top-0 h-screen overflow-y-auto shrink-0 pt-16 pl-10 pr-4"
+        style={{ width: "22%" }}
       >
-        <p className="text-xs text-gray-400 uppercase tracking-widest mb-6 font-sans">Contents</p>
         <nav className="flex flex-col gap-1">
-          {(data?.headings ?? []).map((h) => (
-            <a
-              key={h.id}
-              href={`#${h.id}`}
-              className="group flex items-start gap-2.5 py-1 transition-colors text-sm font-sans"
-              style={{ color: activeId === h.id ? "#111" : "#aaa" }}
-            >
-              <span
-                className="mt-2 block h-px shrink-0 transition-all duration-200"
-                style={{
-                  width: activeId === h.id ? 20 : 12,
-                  background: activeId === h.id ? "#111" : "#ccc",
-                }}
-              />
-              <span className="leading-snug">{h.text}</span>
-            </a>
-          ))}
+          {TOC_ITEMS.map((item) => {
+            const matched = (data?.headings ?? []).find((h) =>
+              h.text.replace(/\s/g, "").includes(item.match.replace(/\s/g, ""))
+            );
+            const isActive = matched ? activeId === matched.id : false;
+            return (
+              <a
+                key={item.label}
+                href={matched ? `#${matched.id}` : undefined}
+                className="group flex items-start gap-2.5 py-1 transition-colors text-sm font-sans"
+                style={{ color: isActive ? "#111" : "#aaa", textDecoration: "none" }}
+              >
+                <span
+                  className="mt-2 block h-px shrink-0 transition-all duration-200"
+                  style={{
+                    width: isActive ? 20 : 12,
+                    background: isActive ? "#111" : "#ccc",
+                  }}
+                />
+                <span className="leading-snug">{item.label}</span>
+              </a>
+            );
+          })}
         </nav>
 
         {lastSync && (
@@ -137,11 +151,11 @@ export default function DocRenderer() {
         )}
       </aside>
 
-      {/* 가운데 여백 — 10% */}
-      <div style={{ width: "10%" }} />
+      {/* 가운데 여백 — 4% */}
+      <div style={{ width: "4%" }} />
 
-      {/* 오른쪽 본문 — 60% */}
-      <main className="pt-16 pb-24 pr-16" style={{ width: "60%" }}>
+      {/* 오른쪽 본문 — 74% */}
+      <main className="pt-16 pb-24 pr-16" style={{ width: "74%" }}>
         <div
           id="gdoc"
           dangerouslySetInnerHTML={{ __html: data?.body ?? "" }}
